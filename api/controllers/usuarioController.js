@@ -4,7 +4,7 @@ const usuarioService = new UsuarioService();
 
 class UsuarioController {
 
-    async cadastrar(req, res) {
+    static async cadastrar(req, res) {
         try {
             const { nome, email, senha } = req.body;
 

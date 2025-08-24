@@ -8,5 +8,5 @@ module.exports = app => {
     bodyParser.json(),
     produto,
     usuario
-  );
-};
+  )
+}
