@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
     const token = req.headers.authorization;
 
     if (!token) {
-        res.status(401).send({ message: 'Token de autenticação não informado!' });
+        return res.status(401).send({ message: 'Token de autenticação não informado!' });
     }
 
     const [, accessToken] = token.split(' ');
@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
 
         return next();
     } catch (error) {
-        res.status(401).send({ message: 'Usuário não autorizado!' });
+        res.status(401).send({ message: 'Token de acesso inválido!' });
     }
 
 }
