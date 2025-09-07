@@ -4,10 +4,10 @@ const PermissaoController = require('../controllers/permissaoController');
 const router = Router();
 
 router
-  .post('/roles', PermissaoController.cadastrar)
-  .get('/roles', PermissaoController.buscarTodos)
-  .get('/roles/:id', PermissaoController.buscarPorId)
-  .delete('/roles/:id', PermissaoController.deletar)
-  .put('/roles/:id', PermissaoController.editar);
+  .post('/permissoes', PermissaoController.cadastrar)
+  .get('/permissoes', PermissaoController.buscarTodos)
+  .get('/permissoes/:id', PermissaoController.buscarPorId)
+  .delete('/permissoes/:id', PermissaoController.deletar)
+  .put('/permissoes/:id', PermissaoController.editar);
 
 module.exports = router;
