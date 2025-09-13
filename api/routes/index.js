@@ -5,7 +5,7 @@ const usuario = require('./usuarioRoute');
 const auth = require('./authRoute');
 const role = require('./roleRoute');
 const permissao = require('./permissaoRoute');
-const seguranca = require('./seguranca');
+const seguranca = require('./segurancaRoute');
 
 module.exports = app => {
   app.use(
