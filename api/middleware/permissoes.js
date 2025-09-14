@@ -1,14 +1,14 @@
 const database = require('../models');
 
-const roles = (listaRoles) => {
+const permissoes = (listaPermissoes) => {
     return async (req, res, next) => {
         const { usuarioId } = req;
 
         const usuario = await database.usuarios.findOne({
             include: [
                 {
-                    model: database.roles,
-                    as: 'usuario_roles',
+                    model: database.permissoes,
+                    as: 'usuario_permissoes',
                     attributes: ['id', 'nome']
                 }
             ],
@@ -18,12 +18,12 @@ const roles = (listaRoles) => {
         });
 
         if (!usuario) {
-            return res.status(401).send({ message: 'Usuário não cadastrado!' });
+            return res.status(401).send({ mesage: 'Usuário não cadastrado!' });
         }
 
-        const usuarioTemPermissao = usuario.usuario_roles
-            .map((role) => role.nome)
-            .some((role) => listaRoles.include(role));
+        const usuarioTemPermissao = usuario.usuario_permissoes
+            .map((permissao) => permissao.nome)
+            .some((permissao) => listaPermissoes.includes(permissao));
 
         if (!usuarioTemPermissao) {
             return res.status(401).send({ message: 'Usuário não possui acesso a esta rota!' });
@@ -33,4 +33,4 @@ const roles = (listaRoles) => {
     }
 }
 
-module.exports = roles;
+module.exports = permissoes;
