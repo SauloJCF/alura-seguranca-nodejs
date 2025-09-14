@@ -29,7 +29,15 @@ class RoleService {
     }
 
     async buscarTodos() {
-        const roles = await database.roles.findAll();
+        const roles = await database.roles.findAll({
+            include: [
+                {
+                    model: database.permissoes,
+                    as: 'roles_das_permissoes',
+                    attributes: ['id', 'nome', 'descricao']
+                }
+            ]
+        });
         return roles;
     }
 
